@@ -1,0 +1,55 @@
+.user__loading__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+
+  .user__loading__card {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 260px;
+    text-align: center;
+    .user__loading__card__img {
+      width: 200px;
+      height: 200px;
+      border-radius: 100%;
+      background: #e5eaf2;
+      text-align: center;
+      margin: 10px auto;
+    }
+    .user__loading__card__name {
+      width: 90%;
+      height: 20.8px;
+      border-radius: 4px;
+      background: #e5eaf2;
+      margin: 10px auto;
+    }
+    .user__loading__card__age {
+      width: 70%;
+      height: 18px;
+      border-radius: 4px;
+      background: #e5eaf2;
+      margin: 10px auto;
+    }
+    .user__loading__card__email {
+      width: 90%;
+      height: 18px;
+      border-radius: 4px;
+      background: #e5eaf2;
+      margin: 10px auto;
+    }
+    .skeleton__anime {
+      background: linear-gradient(90deg, #f7f7f7, #ddd, #f7f7f7);
+      background-size: 200%;
+      animation: skeletonAnime 0.7s linear 0s infinite;
+    }
+  }
+}
+@keyframes skeletonAnime {
+  to {
+    background-position: 200%;
+  }
+}

@@ -1,0 +1,31 @@
+#navbar {
+  padding: 10px 0;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__logo {
+      font-size: 40px;
+      color: #000;
+      text-decoration: none;
+    }
+    &__links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    &__item {
+      a {
+        font-size: 18px;
+        color: #000;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .active {
+        color: dodgerblue;
+      }
+    }
+  }
+}
