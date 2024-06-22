@@ -7,7 +7,9 @@ import { motion } from "framer-motion";
 const Users = () => {
   const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(false);
-  const user = JSON.parse(localStorage.getItem("user"));
+  const [reload, setReload] = useState(true);
+  const userItem = JSON.parse(localStorage.getItem("user"));
+
   useEffect(() => {
     setLoading(true);
     axios
@@ -15,7 +17,14 @@ const Users = () => {
       .then((res) => setUsers(res.data.data.users))
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
-  }, []);
+  }, [reload]);
+
+  const handleDeleteUser = (id) => {
+    axios
+      .delete(`/users/${id}`)
+      .then(() => setReload((p) => !p))
+      .catch((err) => console.log(err));
+  };
 
   const userItems = users?.map((user) => (
     <div key={user?.id} className="user__card">
@@ -27,10 +36,14 @@ const Users = () => {
       </div>
       <h4 className="user__age"> {user?.phones[0]}</h4>
       <p className="user__email">{user?.role}</p>
-      <div className="btns">
-        <button>Delete</button>
-        <button>Edit</button>
-      </div>
+      {userItem?.role === "owner" ? (
+        <div className="btns">
+          <button onClick={() => handleDeleteUser(user?.id)}>Delete</button>
+          <button>Edit</button>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   ));
   return (
@@ -41,7 +54,7 @@ const Users = () => {
     >
       <div className="container">
         <h2 className="user__about">
-          {user ? `${user?.FirstName} ${user?.role}` : "Users"}
+          {userItem ? `${userItem?.FirstName} ${userItem?.role}` : "Users"}
         </h2>
         {loading ? (
           <UserLoading count={8} />

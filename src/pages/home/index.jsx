@@ -6,6 +6,8 @@ const Home = () => {
       <div className="home">
         <p>john32 ---- parol: 12345678 ---- admin</p>
         <p>iskandar ---- parol: 12345678 ---- user</p>
+        <p>owner -- bolsa delete ham ishlaydi </p>
+        <p>model qilindi</p>
       </div>
     </div>
   );
